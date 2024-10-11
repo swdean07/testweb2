@@ -12,14 +12,14 @@
         #result {
             width: 30%;
             height: 600px;
-            transition: background-image 0.2s ease; /* 전환 시간을 0.2초로 변경 */
+            transition: background-image 0.2s ease;
             background-size: 100% auto;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
             color: white;
             text-align: center;
-            border: 5px solid rgb(6, 39, 58); /* 테두리 추가 */
+            border: 5px solid white; /* 테두리 추가 */
             border-radius: 10px; /* 테두리 둥글게 */
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* 테두리 그림자 추가 */
         }
@@ -32,6 +32,33 @@
             padding: 10px;
             border-radius: 5px;
             width: 80%; /* 텍스트 박스의 너비 설정 */
+        }
+        ul {
+            list-style-type: none; /* 기본 리스트 스타일 제거 */
+            padding: 0; /* 기본 패딩 제거 */
+            display: flex; /* 수평 정렬 */
+            justify-content: center; /* 중앙 정렬 */
+            margin: 20px 0; /* 위 아래 여백 */
+        }
+        li {
+            margin: 0 15px; /* 좌우 여백 */
+        }
+        li a {
+            text-decoration: none; /* 밑줄 제거 */
+            color: white; /* 텍스트 색상 */
+            padding: 10px 20px; /* 패딩 추가 */
+            border: 2px solid white; /* 테두리 추가 */
+            border-radius: 5px; /* 둥글게 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+            display: flex; /* Flexbox 사용 */
+            align-items: center; /* 수직 중앙 정렬 */
+            justify-content: center; /* 수평 중앙 정렬 */
+            height: 100%; /* 높이 설정 */
+            width: 100%; /* 너비 설정 */
+            transition: background 0.3s; /* 배경 전환 효과 */
+        }
+        li a:hover {
+            background: rgba(255, 255, 255, 0.2); /* 호버 시 배경 색상 */
         }
     </style>
 </head>
