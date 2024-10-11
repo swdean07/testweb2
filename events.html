@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunch Manu</title>
+    <link rel="stylesheet" href="css/function.css">
+    <style>
+        body {
+            background-image: url('images/town-8310950_1280.jpg');
+        }
+        #result {
+            width: 60%;
+            height: 600px;
+            transition: background-image 0.5s ease;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#" onclick="changeBg('한식')">한식</a></li>
+        <li><a href="#" onclick="changeBg('양식')">양식</a></li>
+        <li><a href="#" onclick="changeBg('중식')">중식</a></li>
+    </ul>
+    <div id="result"></div>
+
+    <script>
+        function changeBg(picture) {
+            var result = document.querySelector('#result');
+            let images = [];
+            switch (picture) {
+                case '한식':
+                    images = ["url('images/BB1o40SZ.jpg')",
+                        "url('images/2021012702508_0.jpg')"
+                    ];
+                    break;
+                case '양식':
+                    images = ["url('images/e18c1734-72ea-42d5-8139-3f0cae13d18c.jpg')",
+                        "url(images/2f21164e31f99.jpg)"
+                    ];
+                    break;
+                case '중식':
+                    images = ["url('images/a40ae8fe0ada4.jpg')",
+                        "url(images/46f9e8cd-ff32-440d-883e-e6d79ba15b3d.jpg)"
+                    ];
+                    break;
+                default:
+                    result.style.backgroundImage = "none";
+                    return;
+            }
+            const randomIndex = Math.floor(Math.random() * images.length);
+            result.style.backgroundImage = images[randomIndex];
+        }
+    </script>
+</body>
+</html>
