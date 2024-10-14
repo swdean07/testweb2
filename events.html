@@ -6,9 +6,9 @@
     <title>Lunch Menu</title>
     <link rel="stylesheet" href="css/function.css">
     <style>
-        body {
+        /* body {
             background-image: url('images/town-8310950_1280.jpg');
-        }
+        } */
         #result {
             width: 30%;
             height: 600px;
@@ -45,64 +45,153 @@
         <div class="menu-info" id="menuInfo"></div>
     </div>
 
+    <div class="menu-container">
+        <div id="menuList">
+            <h3>등록된 메뉴:</h3>
+            <ul id="registeredMenuList"></ul>
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="menuInput" placeholder="먹고 싶은 메뉴 입력">
+            <button onclick="addMenu()">추가</button>
+            <button onclick="removeMenu()">삭제</button>
+        </div>
+    </div>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 가로 방향 가운데 정렬 */
+            height: 100vh; /* 전체 화면 높이 사용 */
+            margin: 0; /* 기본 여백 제거 */
+        }
+        .menu-container {
+            display: flex; /* 플렉스 박스 설정 */
+            flex-direction: column; /* 수직 정렬 */
+            align-items: center; /* 가로 방향 가운데 정렬 */
+            margin-top: 20px; /* 위쪽 여백 추가 */
+        }
+        #menuList {
+            margin-bottom: 10px; /* 제목과 입력 필드 간의 간격 */
+        }
+        .input-container {
+            display: flex;
+            justify-content: center; /* 가로 가운데 정렬 */
+        }
+        #menuInput {
+            margin-right: 5px; /* 버튼과의 간격 */
+        }
+    </style>
+
     <script>
         function changeBg(picture) {
-            var result = document.querySelector('#result');
-            var menuInfo = document.querySelector('#menuInfo');
-            let images = [];
-            let menuItems = [];
+        var result = document.querySelector('#result');
+        var menuInfo = document.querySelector('#menuInfo');
+        let images = [];
+        let menuItems = [];
 
-            switch (picture) {
-                case '한식':
-                    images = [
-                        "url('images/BB1o40SZ.jpg')",
-                        "url('images/2021012702508_0.jpg')",
-                        "url('images/558d170258752df2dd76bef00861497f.jpg')"
-                    ];
-                    menuItems = [
-                        { name: '된장찌개', price: '₩6,000' },
-                        { name: '김치찌개', price: '₩6,000' },
-                        { name: '김밥', price: '₩3,500'}
-                    ];
-                    break;
-                case '양식':
-                    images = [
-                        "url('images/e18c1734-72ea-42d5-8139-3f0cae13d18c.jpg')",
-                        "url('images/2f21164e31f99.jpg')",
-                        "url('images/20231218095618283_photo_5489e5c7bc04.jpg')"
-                    ];
-                    menuItems = [
-                        { name: '스테이크', price: '₩12,900' },
-                        { name: '파스타', price: '₩15,900' },
-                        { name: '피자', price: '₩12,900' }
-                    ];
-                    break;
-                case '중식':
-                    images = [
-                        "url('images/a40ae8fe0ada4.jpg')",
-                        "url('images/46f9e8cd-ff32-440d-883e-e6d79ba15b3d.jpg')",
-                        "url('images/750_750_20240627051159_photo1_9JIeC3gALaTw.jpg')"
-                    ];
-                    menuItems = [
-                        { name: '짜장면', price: '₩7,000' },
-                        { name: '짬뽕', price: '₩8,000' },
-                        { name: '탕수육', price: '₩13,000'}
-                    ];
-                    break;
-                default:
-                    result.style.backgroundImage = "none";
-                    menuInfo.textContent = '';
-                    return;
+        switch (picture) {
+            case '한식':
+                images = [
+                    "url('images/BB1o40SZ.jpg')",
+                    "url('images/2021012702508_0.jpg')",
+                    "url('images/558d170258752df2dd76bef00861497f.jpg')"
+                ];
+                menuItems = [
+                    { name: '된장찌개', price: '₩6,000' },
+                    { name: '김치찌개', price: '₩6,000' },
+                    { name: '김밥', price: '₩3,500' }
+                ];
+                break;
+            case '양식':
+                images = [
+                    "url('images/e18c1734-72ea-42d5-8139-3f0cae13d18c.jpg')",
+                    "url('images/2f21164e31f99.jpg')",
+                    "url('images/20231218095618283_photo_5489e5c7bc04.jpg')"
+                ];
+                menuItems = [
+                    { name: '스테이크', price: '₩12,900' },
+                    { name: '파스타', price: '₩15,900' },
+                    { name: '피자', price: '₩12,900' }
+                ];
+                break;
+            case '중식':
+                images = [
+                    "url('images/a40ae8fe0ada4.jpg')",
+                    "url('images/46f9e8cd-ff32-440d-883e-e6d79ba15b3d.jpg')",
+                    "url('images/750_750_20240627051159_photo1_9JIeC3gALaTw.jpg')"
+                ];
+                menuItems = [
+                    { name: '짜장면', price: '₩7,000' },
+                    { name: '짬뽕', price: '₩8,000' },
+                    { name: '탕수육', price: '₩13,000' }
+                ];
+                break;
+            default:
+                result.style.backgroundImage = "none";
+                menuInfo.textContent = '';
+                return;
+        }
+        
+        const randomIndex = Math.floor(Math.random() * images.length);
+        result.style.backgroundImage = images[randomIndex];
+
+        // 랜덤 메뉴 표시
+        updateMenu(menuItems);
+        
+        // 배경 클릭 시 랜덤 메뉴 이미지 및 가격 표시
+        result.onclick = function() {
+            updateMenu(menuItems);
+        };
+    }
+    
+        const registerdMenus = [];
+
+        function addMenu() {
+            const menuInput = document.getElementById('menuInput');
+            const menuName = menuInput.value.trim();
+        }
+
+        if (menuName) {
+            registerdMenus.push(menuName);
+            menuInput.value = '';
+            updateRegisteredMenuList();
+        } else {
+            alert('메뉴 이름을 입력하세요.');
+        }
+
+        function removeMenu() {
+            const menuInput = document.getElementById('menuInput');
+            const menuName = menuInput.value.trim();
+
+            const index = registerdMenus.indexOf(menuName);
+            if (index !== -1) {
+                registerdMenus.splice(index, 1);
+                menuInput.value = '';
+                updateRegisteredMenuList();
+            } else {
+                alert('등록된 메뉴가 아닙니다.');
             }
-            const randomIndex = Math.floor(Math.random() * images.length);
-            result.style.backgroundImage = images[randomIndex];
+        }
 
+        function updateRegisteredMenuList() {
+            const menuList = document.getElementById('registeredMenuList');
+            menuList.innerHTML = '';
+            registerdMenus.forEach(menu => {
+                const li = document.createElement('li');
+                li.textContent = menu;
+                menuList.appendChild(li);
+            })
+        }
+
+        function updateMenu(menuItems) {
             const randomMenuIndex = Math.floor(Math.random() * menuItems.length);
             const selectedItem = menuItems[randomMenuIndex];
 
-            // 메뉴 이름과 가격 표시
+        // 메뉴 이름과 가격 표시
             menuInfo.innerHTML = menuItems.map(item => `${item.name} - ${item.price}`).join('<br>');
-        }
+    }
     </script>
 </body>
 </html>
