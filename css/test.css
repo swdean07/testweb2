@@ -1,0 +1,246 @@
+/* 전체 레이아웃 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    border-radius: 600px;
+}
+
+/* 헤더 영역 */
+
+.rounded-header {
+    background-color:dark;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px; /* 모서리를 둥글게 만들기 */
+    margin: 20px; /* 헤더와 화면 사이의 여백 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 살짝 입체감을 주는 그림자 */
+}
+
+header {
+    background-color: darkslategray;
+    color: white;
+    padding: 20px;
+    margin: 5%;
+    text-align:center;
+    font-style: oblique;
+    border-radius: 80%;
+    box-shadow: 0px 4px 8px black;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*실시간 속보 뉴스 섹션 스타일*/
+.breaking-news {
+    padding: 20px;
+    background-color: darkgray;
+    color: darkred;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 10px solid rgba(0, 0, 0, 0.1);
+}
+
+.breaking-news h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#newslist {
+    list-style-type: none;
+    padding: 0;
+}
+
+#newslist li {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 카테고리 섹션 스타일 */
+.categories {
+    padding: 40px; /* 섹션 내 여백 */
+    background-color: #f9f9f9; /* 배경색 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+/* 개별 카테고리 아이템 */
+.category-item {
+    margin: 20px auto; /* 간격 설정 */
+    padding: 20px;
+    background-color: white; /* 아이템 배경색 */
+    border: 1px solid #ddd; /* 테두리 설정 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+    max-width: 600px; /* 아이템 최대 너비 */
+}
+
+/* 카테고리 제목 */
+.category-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* 버튼 스타일 */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* 본문 영역 */
+main {
+    padding: 20px;
+    border-radius: 600px;
+}
+
+.hero {
+    background-color: #f4f4f4;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 8px darkgray;
+}
+
+.hero h2 {
+    margin: 0 0 10px 0;
+}
+
+.hero p {
+    margin: 0 0 20px 0;
+}
+
+.hero button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 살짝 입체감을 주는 그림자 */
+}
+
+.hero button:hover {
+    background-color: #555;
+}
+
+/* 기능 영역 */
+.features {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    align-items: flex-start;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px black;
+    box-sizing: border-box;
+    width: 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.feature-item {
+    width: 30%;
+    text-align: center;
+    max-width: 1200px;
+    height: auto;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e9e9e9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px black;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+}
+
+.feature-icon {
+    width: 70px;
+    height:auto;
+    margin-bottom: 10px;
+}
+
+.feature-item:not(:last-child){
+    border-right: 2px solid ;
+}
+
+.button {
+    display: inline-block;
+    width: 150px; /* 버튼의 너비를 설정 */
+    padding: 10px 20px; /* 안쪽 여백을 줄임 */
+    margin: 10px 5px; /* 바깥 여백 설정 */
+    font-size: 14px; /* 텍스트 크기를 줄여 버튼 크기 조정 */
+    background-color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+/* 푸터 영역 */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
